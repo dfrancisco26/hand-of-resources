@@ -19,7 +19,17 @@ describe('backend-express-template routes', () => {
     ]);
   });
 
-
+  it('#GET newgames/:id should return specific id game', async () => {
+    const res = await request(app).get('/newgames/1');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Stray',
+      genre: 'Cat Simulator',
+      release: 2022
+    });
+    
+  });
   afterAll(() => {
     pool.end();
   });
