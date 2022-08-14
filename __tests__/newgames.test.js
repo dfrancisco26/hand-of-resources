@@ -52,6 +52,12 @@ describe('backend-express-template routes', () => {
     expect(res.body.genre).toBe('Kitty Sim');
   });
 
+  it('#DELETE /newgames/:id deletes game object', async () => {
+    const res = await request(app).delete('/newgames/2');
+    const resp = await request(app).get('/newgames/2');
+    expect(resp.status).toBe(200);
+    expect(res.body === null);
+  });
 
 });
 
