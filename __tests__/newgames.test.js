@@ -28,9 +28,25 @@ describe('backend-express-template routes', () => {
       genre: 'Cat Simulator',
       release: 2022
     });
-    
   });
-  afterAll(() => {
-    pool.end();
+
+  it('#POST /newgames creates a new newgame', async () => {
+    const NewGame = {
+      'name': 'Tails of Iron',
+      'genre': 'Action/Adventure',
+      'release': 2021 
+    };
+    const res = await request(app).post('/newgames').send(NewGame);
+    expect(res.status !== 404);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...NewGame,
+    });
   });
 });
+
+
+afterAll(() => {
+  pool.end();
+});
+
