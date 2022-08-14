@@ -43,6 +43,16 @@ describe('backend-express-template routes', () => {
       ...NewGame,
     });
   });
+
+  it('#PUT /newgames/:id updates existing game', async () => {
+    const res = await request(app).put('/newgames/1').send({
+      genre: 'Kitty Sim',
+    });
+    // expect(res.status).toBe(200);
+    expect(res.body.genre).toBe('Kitty Sim');
+  });
+
+
 });
 
 
