@@ -50,11 +50,9 @@ describe('retrogames routes', () => {
   });
 
   it('#DELETE /retrogames/:id deletes retrogame object', async () => {
-    const res = await request(app).delete('/retrogames/2');
+    await request(app).delete('/retrogames/2');
     const resp = await request(app).get('/retrogames/2');
-    console.log(res.body);
-    expect(resp.status).toBe(200);
-    expect(res.body).toBe(null);
+    expect(resp.status).toBe(404);
   });
 });
 
