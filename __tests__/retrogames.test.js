@@ -29,6 +29,17 @@ describe('backend-express-template routes', () => {
       release: 1999 
     });
   });
+  it('#POST /retrogames creates a new retrogame object', async () => {
+    const RetroGame = {
+      'name': 'Twisted Metal',
+      'genre': 'Vehicular Combat',
+      'release': 1995
+    };
+
+    const res = await request(app).post('/retrogames').send(RetroGame);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ id: expect.any(String), ...RetroGame });
+  });
 
 });
 
