@@ -41,6 +41,13 @@ describe('backend-express-template routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...RetroGame });
   });
 
+  it('#PUT /newgames/:id updates existing retrogame key and value', async () => {
+    const res = await request(app).put('/retrogames/2').send({
+      name: 'Pocket Monsters Red'
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('Pocket Monsters Red');
+  });
 });
 
 
