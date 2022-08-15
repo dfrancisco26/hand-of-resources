@@ -3,7 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('backend-express-template routes', () => {
+describe('newgames routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
@@ -37,7 +37,7 @@ describe('backend-express-template routes', () => {
       'release': 2021 
     };
     const res = await request(app).post('/newgames').send(NewGame);
-    expect(res.status !== 404);
+    expect(res.status).toBe(200);
     expect(res.body).toEqual({
       id: expect.any(String),
       ...NewGame,
@@ -48,19 +48,16 @@ describe('backend-express-template routes', () => {
     const res = await request(app).put('/newgames/1').send({
       genre: 'Kitty Sim',
     });
-    // expect(res.status).toBe(200);
+    expect(res.status).toBe(200);
     expect(res.body.genre).toBe('Kitty Sim');
   });
 
   it('#DELETE /newgames/:id deletes game object', async () => {
-    const res = await request(app).delete('/newgames/2');
+    await request(app).delete('/newgames/2');
     const resp = await request(app).get('/newgames/2');
-    expect(resp.status).toBe(200);
-    expect(res.body === null);
+    expect(resp.status).toBe(404);
   });
-
 });
-
 
 afterAll(() => {
   pool.end();

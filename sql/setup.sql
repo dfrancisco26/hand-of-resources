@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP table IF EXISTS newgames;
 DROP table IF EXISTS retrogames;
+DROP table IF EXISTS apples;
 
 CREATE TABLE newgames (
     id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -30,3 +31,16 @@ VALUES
 ('Pokémon Red', 'Adventure/JRPG', 1996),
 ('Syphon Filter', 'Stealth Shooter', 1999),
 ('Gran Turismo 2', 'Racing Simulator', 1999);
+
+CREATE TABLE apples (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR,
+    color VARCHAR,
+    feature VARCHAR
+);
+
+INSERT INTO apples (name, color, feature)
+VALUES 
+      ('Honeycrisp','yellow-red', 'Crunch'),
+      ('Red Delicious', 'Red', '?' ),
+      ('Granny Smith', 'Green', 'Tartness');

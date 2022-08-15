@@ -3,7 +3,7 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe('backend-express-template routes', () => {
+describe('retrogames routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
@@ -48,11 +48,13 @@ describe('backend-express-template routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('Pocket Monsters Red');
   });
+
   it('#DELETE /retrogames/:id deletes retrogame object', async () => {
     const res = await request(app).delete('/retrogames/2');
     const resp = await request(app).get('/retrogames/2');
+    console.log(res.body);
     expect(resp.status).toBe(200);
-    expect(res.body === null);
+    expect(res.body).toBe(null);
   });
 });
 
