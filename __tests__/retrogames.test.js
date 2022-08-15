@@ -19,6 +19,17 @@ describe('backend-express-template routes', () => {
     ]);
   });
 
+  it('#GET /retrogames/:id should return a specific retrogame', async () => {
+    const res = await request(app).get('/retrogames/3');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: '3',
+      name: 'Syphon Filter',
+      genre: 'Stealth Shooter',
+      release: 1999 
+    });
+  });
+
 });
 
 
