@@ -37,6 +37,14 @@ describe('dogs routes', () => {
       ...Dog,
     });
   });
+
+  it('#PUT /dogs/:id updates dog info', async () => {
+    const res = await request(app).put('/dogs/1').send({
+      name: 'Wuwu',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('Wuwu');
+  });
 });
 
 afterAll(() => {
