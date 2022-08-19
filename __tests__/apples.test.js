@@ -42,6 +42,15 @@ describe('apples routes', () => {
       ...Apple,
     });
   });
+
+  
+  it('#PUT /apples/:id updates an existing apple', async () => {
+    const res = await request(app).put('/apples/1').send({
+      name: 'Honey Crisp',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.name).toBe('Honey Crisp');
+  });
   
   afterAll(() => {
     pool.end();
