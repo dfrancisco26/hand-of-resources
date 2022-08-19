@@ -3,6 +3,7 @@
 DROP table IF EXISTS newgames;
 DROP table IF EXISTS retrogames;
 DROP table IF EXISTS apples;
+DROP table IF EXISTS dogs;
 
 CREATE TABLE newgames (
     id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -44,3 +45,17 @@ VALUES
       ('Honeycrisp','yellow-red', 'Crunch'),
       ('Red Delicious', 'Red', '?' ),
       ('Granny Smith', 'Green', 'Tartness');
+
+CREATE TABLE dogs (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR,
+    age SMALLINT,
+    personality VARCHAR,
+    rating SMALLINT
+);
+
+INSERT INTO dogs (name, age, personality, rating)
+VALUES 
+    ('Lucy', 5, 'Probably extraterrestrial.', 10),
+    ('Bella', 8, 'Mean Girls type beat.', 10),
+    ('Oreo', 6, 'Posh, proper, but cowardly.', 10);
