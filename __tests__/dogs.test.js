@@ -22,6 +22,21 @@ describe('dogs routes', () => {
       id: '1', name: 'Lucy', age: 5, personality: 'Probably extraterrestrial.', rating: 10
     });
   });
+
+  it('#POST /dogs creates new dog', async () => {
+    const Dog = {
+      'name': 'Elton',
+      'age': 2,
+      'personality': 'Baby dog chases bad goat.',
+      'rating': 10
+    };
+    const res = await request(app).post('/dogs').send(Dog);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...Dog,
+    });
+  });
 });
 
 afterAll(() => {
