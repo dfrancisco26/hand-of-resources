@@ -51,6 +51,12 @@ describe('apples routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('Honey Crisp');
   });
+
+  it('#DELETE /apples/:id deletes the apple object with that id', async () => {
+    await request(app).delete('/apples/2');
+    const resp = await request(app).get('/apples/2');
+    expect(resp.status).toBe(404);
+  });
   
   afterAll(() => {
     pool.end();
