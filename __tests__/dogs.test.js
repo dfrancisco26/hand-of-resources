@@ -45,6 +45,12 @@ describe('dogs routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('Wuwu');
   });
+
+  it('#DELETE /dogs/:id deletes dog with that id', async () => {
+    await request(app).delete('/dogs/2');
+    const res = await request(app).get('/dogs/2');
+    expect(res.status).toBe(404);
+  });
 });
 
 afterAll(() => {
