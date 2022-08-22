@@ -45,6 +45,12 @@ describe('newgames routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.brand).toBe('Post??');
   });
+
+  it('#DELETE /cereals/:id deletes cereal', async () => {
+    await request(app).delete('/cereals/1');
+    const res = await request(app).get('/cereals/1');
+    expect(res.status).toBe(404);
+  });
 });
 
 afterAll(() => {
