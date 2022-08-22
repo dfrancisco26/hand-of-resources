@@ -4,6 +4,7 @@ DROP table IF EXISTS newgames;
 DROP table IF EXISTS retrogames;
 DROP table IF EXISTS apples;
 DROP table IF EXISTS dogs;
+DROP table IF EXISTS cereals;
 
 CREATE TABLE newgames (
     id BIGINT GENERATED ALWAYS AS IDENTITY,
@@ -59,3 +60,16 @@ VALUES
     ('Lucy', 5, 'Probably extraterrestrial.', 10),
     ('Bella', 8, 'Mean Girls type beat.', 10),
     ('Oreo', 6, 'Posh, proper, but cowardly.', 10);
+
+CREATE TABLE cereals (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR,
+    organic BOOLEAN,
+    brand VARCHAR
+);
+
+INSERT INTO cereals (name, organic, brand)
+VALUES 
+      ('Captain Crunch', false, 'Kellogg?'),
+      ('Blueberry Wheatfuls',true, 'Moms Best Cereals'),
+      ('Cinnamon Toast Crunch', false, 'General Mills');
