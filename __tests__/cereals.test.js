@@ -37,6 +37,14 @@ describe('newgames routes', () => {
       ...Cereal,
     });
   });
+
+  it('#PUT /cereals/:id updates a cereal', async () => {
+    const res = await request(app).put('/cereals/1').send({
+      brand: 'Post??',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.brand).toBe('Post??');
+  });
 });
 
 afterAll(() => {
