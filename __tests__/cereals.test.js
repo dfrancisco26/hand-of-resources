@@ -17,6 +17,12 @@ describe('newgames routes', () => {
       { id: '3', name: 'Cinnamon Toast Crunch', organic: false, brand: 'General Mills' },
     ]);
   });
+
+  it('#GET cereals/:id should return a cereal with that id', async () => {
+    const res = await request(app).get('/cereals/2');
+    expect(res.status).toBe(200);
+    expect(res.body.organic).toEqual(true);
+  });
 });
 
 afterAll(() => {
