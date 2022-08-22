@@ -23,6 +23,20 @@ describe('newgames routes', () => {
     expect(res.status).toBe(200);
     expect(res.body.organic).toEqual(true);
   });
+
+  it('#POST /cereals creates new cereal', async () => {
+    const Cereal = {
+      'name': 'Some fancy granola',
+      'organic': true,
+      'brand': 'expensive',
+    };
+    const res = await request(app).post('/cereals').send(Cereal);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...Cereal,
+    });
+  });
 });
 
 afterAll(() => {
